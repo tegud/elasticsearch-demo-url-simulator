@@ -6,8 +6,8 @@ var utilities = require('./lib/utilities');
 var urls = require('./lib/urls');
 
 var config = JSON.parse(fs.readFileSync(__dirname + '/config.json', 'utf-8'));
-var userAgents = fs.readFileSync(__dirname + '/useragents.csv', 'utf-8').split(' \r\n');
-var ips = fs.readFileSync(__dirname + '/ips.csv', 'utf-8').split(' \r\n');
+var userAgents = fs.readFileSync(__dirname + '/useragents.csv', 'utf-8').split('\n');
+var ips = fs.readFileSync(__dirname + '/ips.csv', 'utf-8').split('\n');
 
 console.log(`Sending simulated urls to ${config.host}:${config.port}`)
 
@@ -25,8 +25,6 @@ function logRequest() {
 		time_to_first_byte: utilities.randomNumber(15, 400),
 		url: urls.random()
  	};
-
- 	console.log(logstash);
 
 	var message = new Buffer(JSON.stringify(logstash));
 
