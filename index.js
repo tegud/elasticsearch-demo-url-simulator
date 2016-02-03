@@ -26,6 +26,8 @@ function logRequest() {
 		url: urls.random()
  	};
 
+ 	console.log(logstash);
+
 	var message = new Buffer(JSON.stringify(logstash));
 
 	socket.send(message, 0, message.length, config.port, config.host, function(err, bytes) {
